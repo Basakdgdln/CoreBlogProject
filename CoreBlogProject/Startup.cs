@@ -39,6 +39,9 @@ namespace CoreBlogProject
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error1", "?code={0}"); //2 parametre alýr (hata alýndýðýndan yönlendireceði sayfa, sorgu(kod deðeri (null dönebileceði için ? yazýlýr.))
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
