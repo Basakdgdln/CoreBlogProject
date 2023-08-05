@@ -53,6 +53,11 @@ namespace BusinessLayer.Concrete
             return _BlogDal.GetListAll(x => x.BlogID == id);
         }
 
+        public List<Blog> GetLast3Blog()
+        {
+            return _BlogDal.GetListAll().OrderByDescending(x=>x.BlogCreateDate).Take(3).ToList();
+        }
+
         public List<Blog> GetListWithWriter(int id)
         {
             return _BlogDal.GetListAll(x=>x.WriterID==id);
