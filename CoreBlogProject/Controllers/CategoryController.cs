@@ -13,7 +13,7 @@ namespace CoreBlogProject.Controllers
         CategoryManager cm = new CategoryManager(new EfCategoryRepository());
         public IActionResult Index()
         {
-            return View(cm.CategoryAllist());
+            return View(cm.GetList());
         }
     }
 }
