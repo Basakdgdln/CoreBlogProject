@@ -2,13 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Abstract
+namespace DataAccessLayer.Abstract
 {
-   public interface INotificationService: IGenericService<Notification>
+  public interface IMessage2Dal: IGenericDal<Message2>
     {
-            }
+        List<Message2> GetListWithMessageByWriter(int id);
+    }
 }

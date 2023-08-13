@@ -4,42 +4,46 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class NotificationManager : INotificationService
+    public class MessageManager : IMessageService
     {
-        INotificationDal _notificationDal;
+        IMessageDal _messageDal;
 
-        public NotificationManager(INotificationDal notificationDal)
+        public MessageManager(IMessageDal messageDal)
         {
-            _notificationDal = notificationDal;
+            _messageDal = messageDal;
         }
 
-        public List<Notification> GetList()
+        public List<Message> GetList()
         {
-            return _notificationDal.GetListAll();
-        }   
+            return _messageDal.GetListAll();
+        }
 
-        public void TAdd(Notification t)
+        public List<Message> GetInboxListByWriter(string p)
+        {
+            return _messageDal.GetListAll(x=>x.Receiver==p);
+        }
+
+        public void TAdd(Message t)
         {
             throw new NotImplementedException();
         }
 
-        public void TDelete(Notification t)
+        public void TDelete(Message t)
         {
             throw new NotImplementedException();
         }
 
-        public Notification TGetById(int id)
+        public Message TGetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void TUpdate(Notification t)
+        public void TUpdate(Message t)
         {
             throw new NotImplementedException();
         }
