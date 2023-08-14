@@ -40,7 +40,7 @@ namespace CoreBlogProject
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(x =>
                 {
-                    x.LoginPath="/Login/Index";
+                    x.LoginPath = "/Login/Index";
                 }
                );
         }
@@ -64,13 +64,18 @@ namespace CoreBlogProject
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-              app.UseAuthentication();
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                  );
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

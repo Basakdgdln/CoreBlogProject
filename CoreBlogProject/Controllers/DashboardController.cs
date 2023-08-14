@@ -11,7 +11,6 @@ namespace CoreBlogProject.Controllers
 {
     public class DashboardController : Controller
     {
-        [AllowAnonymous]
         public IActionResult Index()
         {
             BlogManager bm = new BlogManager(new EfBlogRepository());
