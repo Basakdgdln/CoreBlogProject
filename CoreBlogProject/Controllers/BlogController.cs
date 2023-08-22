@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CoreBlogProject.Controllers
@@ -21,7 +22,7 @@ namespace CoreBlogProject.Controllers
         BlogManager bm = new BlogManager(new EfBlogRepository());
         Context c = new Context();
 
-      //  [AllowAnonymous]
+        //  [AllowAnonymous]
         public IActionResult Index()
         {
             return View(bm.GetListWithCategory());
@@ -36,8 +37,7 @@ namespace CoreBlogProject.Controllers
 
         public IActionResult BlogListByWriter()
         {
-            var usermail = User.Identity.Name;
-            var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(x => x.WriterID).FirstOrDefault();
+            var writerID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             return View(bm.GetListWithCategoryByWriterBm(writerID));
         }
 
@@ -58,9 +58,7 @@ namespace CoreBlogProject.Controllers
         [HttpPost]
         public IActionResult BlogAdd(Blog p)
         {
-            var usermail = User.Identity.Name;
-            var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(x => x.WriterID).FirstOrDefault();
-          
+            var writerID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             BlogValidator validationRules = new BlogValidator();
             ValidationResult result = validationRules.Validate(p);
             if (result.IsValid)
@@ -106,9 +104,8 @@ namespace CoreBlogProject.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog p)
         {
-            var usermail = User.Identity.Name;
-            var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(x => x.WriterID).FirstOrDefault();
 
+            var writerID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             BlogValidator validationRules = new BlogValidator();
             ValidationResult result = validationRules.Validate(p);
             if (result.IsValid)

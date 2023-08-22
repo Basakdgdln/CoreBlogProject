@@ -6,11 +6,13 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CoreBlogProject.Controllers
@@ -19,6 +21,12 @@ namespace CoreBlogProject.Controllers
     public class WriterController : Controller
     {
         WriterManager wm = new WriterManager(new EfWriterRepository());
+        private readonly UserManager<AppUser> _userManager;
+        public WriterController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -36,45 +44,34 @@ namespace CoreBlogProject.Controllers
         }
 
         [AllowAnonymous]
-        public PartialViewResult WriterNavbarPartial()
-        {
-            return PartialView();
-        }
-
-        [AllowAnonymous]
         public PartialViewResult WriterFooterPartial()
         {
             return PartialView();
         }
 
         [HttpGet]
-        public IActionResult WriterEditProfile()
+        public async Task<IActionResult> WriterEditProfile()
         {
-            var usermail = User.Identity.Name;
-            Context c = new Context();
-            var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(x => x.WriterID).FirstOrDefault();
-            var values = wm.TGetById(writerID);
-            return View(values);
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            UserUpdateViewModel model = new UserUpdateViewModel();
+            model.imageurl = values.ImageUrl;
+            model.mail = values.Email;
+            model.namesurname = values.NameSurname;
+            model.username = values.UserName;
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult WriterEditProfile(Writer p)
+        public async Task<IActionResult> WriterEditProfile(UserUpdateViewModel model)
         {
-            WriterValidator wv = new WriterValidator();
-            ValidationResult result = wv.Validate(p);
-            if (result.IsValid)
-            {
-                wm.TUpdate(p);
-                return RedirectToAction("Index", "Dashboard");
-            }
-            else
-            {
-                foreach (var x in result.Errors)
-                {
-                    ModelState.AddModelError(x.PropertyName, x.ErrorMessage);
-                }
-            }
-            return View();
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            values.Email = model.mail;
+            values.ImageUrl = model.imageurl;
+            values.NameSurname = model.namesurname;
+            values.UserName = model.username;
+            values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, model.password);
+            var result = await _userManager.UpdateAsync(values);
+            return RedirectToAction("Index", "Dashboard");
         }
 
         [AllowAnonymous]
@@ -106,5 +103,6 @@ namespace CoreBlogProject.Controllers
             wm.TAdd(w);
             return RedirectToAction("Index", "Dashboard");
         }
+
     }
 }

@@ -1,0 +1,32 @@
+﻿@using EntityLayer.Concrete
+@model List<Message2>
+
+@{
+    ViewData["Title"] = "Sendbox";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Konu</th>
+        <th>Alıcı</th>
+        <th>Tarih</th>
+        <th>Mesajı Aç</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>#</td>
+            <td>@x.Subject</td>
+            <td>@x.ReceiverUser.WriterName</td>
+            <td>@(((DateTime)x.MeesageDate).ToString("dd-MMM-yyyy"))</td>
+            <td>
+                <a href="/Message/MessageDetails/@x.MessageID" class="btn btn-outline-warning">Mesajı Aç</a>
+            </td>
+        </tr>
+    }
+</table>
+
