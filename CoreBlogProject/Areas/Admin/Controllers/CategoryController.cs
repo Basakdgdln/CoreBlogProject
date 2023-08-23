@@ -12,6 +12,7 @@ using X.PagedList;
 
 namespace CoreBlogProject.Areas.Admin.Controllers
 {
+
     [Area("Admin")]
     public class CategoryController : Controller
     {

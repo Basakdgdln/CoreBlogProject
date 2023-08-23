@@ -1,6 +1,7 @@
 ﻿using ClosedXML.Excel;
 using CoreBlogProject.Areas.Admin.Models;
 using DataAccessLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace CoreBlogProject.Areas.Admin.Controllers
 {
+
     [Area("Admin")]
     public class BlogController : Controller
     {

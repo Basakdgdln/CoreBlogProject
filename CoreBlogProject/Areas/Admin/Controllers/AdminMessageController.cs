@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,19 +10,20 @@ using System.Threading.Tasks;
 
 namespace CoreBlogProject.Areas.Admin.Controllers
 {
+  
     [Area("Admin")]
     public class AdminMessageController : Controller
     {
         Message2Manager mm = new Message2Manager(new EfMessage2Repository());
         public IActionResult Inbox()
         {
-            int writerid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var writerid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             return View(mm.GetInboxListByWriter(writerid));
         }
 
         public IActionResult Sendbox()
         {
-            int writerid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var writerid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             return View(mm.GetSendboxListByWriter(writerid));
         }
 
@@ -30,9 +32,21 @@ namespace CoreBlogProject.Areas.Admin.Controllers
             return PartialView();
         }
 
+        [HttpGet]
         public IActionResult ComposeMessage()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult ComposeMessage(Message2 p)
+        {
+            p.SenderID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            p.ReceiverID = 2;
+            p.MeesageDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            p.MeesageStatus = true;
+            mm.TAdd(p);
+            return RedirectToAction("Sendbox");
         }
     }
 }
