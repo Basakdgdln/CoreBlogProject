@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CoreBlogProject.ViewComponents.Blog
 {
-    public class BlogListDashboard: ViewComponent
+    public class BlogListDashboard : ViewComponent
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
         public IViewComponentResult Invoke()

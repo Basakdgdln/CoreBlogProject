@@ -16,19 +16,18 @@ using System.Threading.Tasks;
 namespace CoreBlogProject.Controllers
 {
 
-    [AllowAnonymous]
     public class BlogController : Controller
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
         Context c = new Context();
 
-        //  [AllowAnonymous]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(bm.GetListWithCategory());
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.id = id;

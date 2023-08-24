@@ -5,49 +5,53 @@
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
-<section class="main-content-w3layouts-agileits">
-    <div class="container">
-        <h3 class="tittle">Bloglar</h3>
-        <div class="inner-sec">
+<!DOCTYPE html>
 
-            <div class="left-blog-info-w3layouts-agileits text-left">
+<html lang="en-us">
+<body>
+    <main>
+        <section class="section">
+            <div class="container">
                 <div class="row">
-                    @foreach (var x in Model)
-                    {
-                        <div class="col-lg-4 card">
-                            <a href="single.html">
-                                <img src="@x.BlogImage" class="card-img-top img-fluid" alt="">
-                            </a>
-                            <div class="card-body">
-                                <ul class="blog-icons my-4">
-                                    <li>
-                                        <a href="#">
-                                            <i class="far fa-calendar-alt"></i> @(((DateTime)x.BlogCreateDate).ToString("dd/MM/yyyy"))
-                                        </a>
-                                    </li>
-                                    <li class="mx-2">
-                                        <a href="#">
-                                            <i class="far fa-comment"></i> 0
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fas fa-eye"></i> @x.Category.CategoryName
-                                        </a>
-                                    </li>
+                    <div class="col-lg-8 vw-100">
+                        <div class="row">
+                            @foreach (var x in Model)
+                            {
+                                <div class="col-md-6">
 
-                                </ul>
-                                <h5 class="card-title">
-                                    <a href="/Blog/BlogReadAll/@x.BlogID">@x.BlogTitle</a>
-                                </h5>
-                                @*<p class="card-text mb-3">@x.BlogContent.Substring(0,x.BlogContent.Substring(0,130).LastIndexOf(" "))...</p>*@
-                                <a href="/Blog/BlogReadAll/@x.BlogID" class="btn btn-primary read-m">Devamını Oku</a>
-                            </div>
+                                    <article class="card article-card article-card-sm h-100">
+                                        <a href="article.html">
+                                            <div class="card-image">
+                                                <div class="post-info">
+                                                    <span class="text-uppercase">@(((DateTime)x.BlogCreateDate).ToString("dd-MMM-yyyy"))</span>
+                                                </div>
+                                                <img loading="lazy" decoding="async" src="@x.BlogImage" alt="Post Thumbnail" class="w-100" width="420" height="280">
+                                            </div>
+                                        </a>
+                                        <div class="card-body px-0 pb-0">
+                                            <ul class="post-meta mb-2">
+                                                <li>
+                                                    <a href="#!">@x.Category.CategoryName</a>
+                                                </li>
+                                            </ul>
+                                            <h2>
+                                                <a class="post-title" href="article.html">
+                                                  @x.BlogTitle
+                                                </a>
+                                            </h2>
+                                            <p class="card-text">@x.BlogContent.Substring(0, x.BlogContent.Substring(0,115).LastIndexOf(" "))…</p>
+                                            <div class="content">
+                                                <a class="read-more-btn" href="/Blog/BlogReadAll/@x.BlogID">Devamını oku</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            }
                         </div>
-
-                    }
+                    </div>
                 </div>
-                       </div>
-        </div>
-    </div>
-</section>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

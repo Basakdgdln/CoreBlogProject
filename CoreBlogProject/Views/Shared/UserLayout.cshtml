@@ -5,6 +5,94 @@
 
 
 <!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Reporter - Asp.Net Core 5.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="This is meta description">
+    <meta name="author" content="Themefisher">
+    <link rel="shortcut icon" href="~/reporter-bootstrap-main/theme/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="~/reporter-bootstrap-main/theme/images/favicon.png" type="image/x-icon">
+    <meta name="theme-name" content="reporter" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/reporter-bootstrap-main/theme/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/reporter-bootstrap-main/theme/css/style.css">
+</head>
+
+<body>
+
+    @await Html.PartialAsync("Partial1")
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="row no-gutters-lg">
+                    <div class="col-lg-8 mb-5 mb-lg-0">
+                        <div class="row">
+
+                            @RenderBody()
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="widget-blocks">
+                            <div class="row">
+
+                                @await Component.InvokeAsync("WriterAboutBlog")
+
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="widget">
+                                        <h2 class="section-title mb-3">Recommended</h2>
+                                        <div class="widget-body">
+                                            <div class="widget-list">
+
+                                                @await Component.InvokeAsync("BlogMaxRayting")
+
+                                                @await Component.InvokeAsync("BlogLast3Post")
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @await Component.InvokeAsync("CategoryList")
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    @await Html.PartialAsync("Partial3")
+
+    <!-- # JS Plugins -->
+    <script src="~/reporter-bootstrap-main/theme/plugins/jquery/jquery.min.js"></script>
+    <script src="~/reporter-bootstrap-main/theme/plugins/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="~/reporter-bootstrap-main/theme/js/script.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
 <html lang="zxx">
 
 <head>
@@ -15,13 +103,13 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 
     <script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
-        
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
     </script>
     <link href="~/web/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="~/web/css/single.css">
@@ -31,10 +119,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           rel="stylesheet">
 </head>
 
-<body>
-    <!--Header-->
-
-    <header>
+<body>-->
+<!--Header-->
+<!--<header>
         <div class="top-bar_sub_w3layouts container-fluid">
             <div class="row">
                 <div class="col-md-4 logo text-left">
@@ -79,7 +166,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         @await Html.PartialAsync("Partial1")
 
     </header>
-      
+
     @RenderBody()
 
 
@@ -87,8 +174,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
     <script src="~/web/js/jquery-2.2.3.min.js"></script>
-    <!-- //js -->
-    <!--/ start-smoth-scrolling -->
     <script src="~/web//move-top.js"></script>
     <script src="~/web//easing.js"></script>
     <script>
@@ -101,19 +186,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
         });
     </script>
-    <!--// end-smoth-scrolling -->
 
     <script>
         $(document).ready(function () {
-            /*
-                                    var defaults = {
-                                            containerID: 'toTop', // fading element id
-                                        containerHoverID: 'toTopHover', // fading element hover id
-                                        scrollSpeed: 1200,
-                                        easingType: 'linear'
-                                        };
-                                    */
-
             $().UItoTop({
                 easingType: 'easeOutQuart'
             });
@@ -123,11 +198,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <a href="#home" class="scroll" id="toTop" style="display: block;">
         <span id="toTopHover" style="opacity: 1;"> </span>
     </a>
-
-    <!-- //Custom-JavaScript-File-Links -->
     <script src="~/web/js/bootstrap.js"></script>
 
 
 </body>
 
-</html>
+</html>-->
