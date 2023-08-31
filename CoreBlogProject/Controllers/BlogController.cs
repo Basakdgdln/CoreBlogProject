@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace CoreBlogProject.Controllers
 {
@@ -22,9 +23,9 @@ namespace CoreBlogProject.Controllers
         Context c = new Context();
 
         [AllowAnonymous]
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            return View(bm.GetListWithCategory());
+            return View(bm.GetListWithCategory().ToPagedList(page, 8));
         }
 
         [AllowAnonymous]

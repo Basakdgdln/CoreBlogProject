@@ -15,6 +15,11 @@ namespace CoreBlogProject.Controllers
     {
         NewsLetterManager nm = new NewsLetterManager(new EfNewsLetterRepository());
 
+        public PartialViewResult MailNewsletter()
+        {
+            return PartialView();
+        }
+
         [HttpGet]
         public PartialViewResult SubscribeMail()
         {

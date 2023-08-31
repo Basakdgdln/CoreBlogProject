@@ -22,15 +22,16 @@ namespace CoreBlogProject.Controllers
         [HttpGet]
         public PartialViewResult PartialAddComment()
         {
-            return PartialView();
+             return PartialView();
         }
 
         [HttpPost]
-        public IActionResult PartialAddComment(Comment p)
+        public IActionResult PartialAddComment(Comment p, int id)
         {
+            ViewBag.d = cm.GetList(id);
             p.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             p.CommentStatus = true;
-            p.BlogID = 2;
+            p.BlogID = ViewBag.d;
             cm.CommentAdd(p);
             return RedirectToAction("Index", "Blog");
         }

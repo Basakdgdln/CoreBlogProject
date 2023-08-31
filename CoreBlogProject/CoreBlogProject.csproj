@@ -5,6 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Areas\Admin\Controllers\AdminBlogController.cs" />
+    <Content Include="Areas\Admin\Controllers\AdminCommentController.cs" />
+    <Content Include="Areas\Admin\Controllers\AdminMessageController.cs" />
+    <Content Include="Areas\Admin\Controllers\AdminRoleController.cs" />
+    <Content Include="Areas\Admin\Controllers\BlogController.cs" />
+    <Content Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Content Include="Areas\Admin\Controllers\ChartController.cs" />
+    <Content Include="Areas\Admin\Controllers\WidgetController.cs" />
+    <Content Include="Areas\Admin\Controllers\WriterController.cs" />
+    <Content Include="Areas\Admin\Models\BlogModel.cs" />
+    <Content Include="Areas\Admin\Models\BlogModel2.cs" />
+    <Content Include="Areas\Admin\Models\CategoryClass.cs" />
+    <Content Include="Areas\Admin\Models\RoleAssignViewModel.cs" />
+    <Content Include="Areas\Admin\Models\WriterClass.cs" />
+    <Content Include="Areas\Admin\ViewComponents\Statistic\Statistic1.cs" />
+    <Content Include="Areas\Admin\ViewComponents\Statistic\Statistic2.cs" />
+    <Content Include="Areas\Admin\ViewComponents\Statistic\Statistic4.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.102.0" />
     <PackageReference Include="FluentValidation" Version="11.6.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />

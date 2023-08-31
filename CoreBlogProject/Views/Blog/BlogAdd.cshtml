@@ -14,9 +14,7 @@
     @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control", @placeholder = "Görsel alanını doldurunuz..." })
     @Html.ValidationMessageFor(x => x.BlogImage, "", new { @class = "text-danger" })
     <br />
-    @Html.TextBoxFor(x => x.BlogThumbnailImage, new { @class = "form-control", @placeholder = "Küçük görsel alanını doldurunuz..." })
-    <br />
-        @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.d1, "Kategori seçiniz...", new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.d1, "Kategori seçiniz...", new { @class = "form-control" })
     <br />
     @Html.TextAreaFor(x => x.BlogContent, 15, 3, new { @class = "form-control", @placeholder = "İçerik alanını doldurunuz..." })
     @Html.ValidationMessageFor(x => x.BlogContent, "", new { @class = "text-danger" })

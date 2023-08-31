@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace CoreBlogProject.ViewComponents.Category
 {
-    public class CategoryList: ViewComponent
+    public class CategoryList : ViewComponent
     {
         CategoryManager cm = new CategoryManager(new EfCategoryRepository());
+        Context c = new Context();
         public IViewComponentResult Invoke()
         {
             return View(cm.GetList());

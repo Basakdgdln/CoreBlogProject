@@ -1,21 +1,18 @@
-﻿<article class="card mb-4">
-    <div class="card-image">
-        <div class="post-info">
-            <span class="text-uppercase">1 minutes read</span>
-        </div>
-        <img loading="lazy" decoding="async" src="~/reporter-bootstrap-main/theme/images/post/post-9.jpg" alt="Post Thumbnail" class="w-100">
-    </div>
-    <div class="card-body px-0 pb-1">
-        <h3>
-            <a class="post-title post-title-sm"
-               href="article.html">
-                Portugal and France Now
-                Allow Unvaccinated Tourists
-            </a>
-        </h3>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor …</p>
-        <div class="content">
-            <a class="read-more-btn" href="article.html">Read Full Article</a>
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+
+<h2 class="section-title mb-3" style="margin-top:85px">En Beğenilen Blog Yazısı</h2>
+<div class="col-lg-12">
+    <div class="widget">
+        <div class="widget-body">
+            @foreach (var x in Model)
+            {
+                <img loading="lazy" decoding="async" src="@x.BlogImage" alt="About Me" class="w-100 author-thumb-sm d-block">
+                <h2 class="widget-title my-3">@x.BlogTitle</h2>
+                <p class="mb-3 pb-2">@x.BlogContent.Substring(0, 147) …</p> <a href="/Blog/BlogReadAll/@x.BlogID" class="btn btn-sm btn-outline-primary">
+                    Devamını Oku
+                </a>
+            }
         </div>
     </div>
-</article>
+</div>

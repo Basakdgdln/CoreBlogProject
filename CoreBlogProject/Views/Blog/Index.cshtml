@@ -1,5 +1,7 @@
 ﻿@using EntityLayer.Concrete
-@model List<Blog>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Blog>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
@@ -25,21 +27,21 @@
                                                 <div class="post-info">
                                                     <span class="text-uppercase">@(((DateTime)x.BlogCreateDate).ToString("dd-MMM-yyyy"))</span>
                                                 </div>
-                                                <img loading="lazy" decoding="async" src="@x.BlogImage" alt="Post Thumbnail" class="w-100" width="420" height="280">
+                                                <img loading="lazy" decoding="async" src="@x.BlogImage" alt="@x.BlogTitle" class="w-100" style="width:420px; height:280px">
                                             </div>
                                         </a>
                                         <div class="card-body px-0 pb-0">
                                             <ul class="post-meta mb-2">
                                                 <li>
-                                                    <a href="#!">@x.Category.CategoryName</a>
+                                                    <a href="#">@x.Category.CategoryName</a>
                                                 </li>
                                             </ul>
                                             <h2>
-                                                <a class="post-title" href="article.html">
-                                                  @x.BlogTitle
+                                                <a class="post-title" href="/Blog/BlogReadAll/@x.BlogID">
+                                                    @x.BlogTitle
                                                 </a>
                                             </h2>
-                                            <p class="card-text">@x.BlogContent.Substring(0, x.BlogContent.Substring(0,115).LastIndexOf(" "))…</p>
+                                            <p class="card-text">@x.BlogContent.Substring(0, x.BlogContent.Substring(0, 115).LastIndexOf(" "))…</p>
                                             <div class="content">
                                                 <a class="read-more-btn" href="/Blog/BlogReadAll/@x.BlogID">Devamını oku</a>
                                             </div>
@@ -55,3 +57,14 @@
     </main>
 </body>
 </html>
+
+<ul class="pagination" style="margin-left:450px">
+    <li class="page-item">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page}), new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
+   {
+       LiElementClasses = new List<string>
+            {"page-link"}
+   })
+        
+    </li>
+</ul>

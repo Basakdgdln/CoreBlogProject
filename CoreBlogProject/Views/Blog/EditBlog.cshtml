@@ -6,14 +6,12 @@
 
 @using (Html.BeginForm("EditBlog", "Blog", FormMethod.Post))
 {
-    @Html.HiddenFor(x=>x.BlogID)
+    @Html.HiddenFor(x => x.BlogID)
     @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control", @placeholder = "Başlık alanını doldurunuz.." })
     @Html.ValidationMessageFor(x => x.BlogTitle, "", new { @class = "text-danger" })
     <br />
     @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control", @placeholder = "Görsel alanını doldurunuz..." })
     @Html.ValidationMessageFor(x => x.BlogImage, "", new { @class = "text-danger" })
-    <br />
-    @Html.TextBoxFor(x => x.BlogThumbnailImage, new { @class = "form-control", @placeholder = "Küçük görsel alanını doldurunuz..." })
     <br />
     @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.d1, "Kategori seçiniz...", new { @class = "form-control" })
     <br />

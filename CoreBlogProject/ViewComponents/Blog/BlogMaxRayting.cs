@@ -10,10 +10,10 @@ namespace CoreBlogProject.ViewComponents.Blog
 {
     public class BlogMaxRayting : ViewComponent
     {
-        BlogRaytingManager brm = new BlogRaytingManager(new EfBlogRaytingRepository());
+        BlogManager bm = new BlogManager(new EfBlogRepository());
         public IViewComponentResult Invoke()
         {
-            return View(brm.GetList());
+            return View(bm.MaxRaytingBlog());
         }
     }
 }

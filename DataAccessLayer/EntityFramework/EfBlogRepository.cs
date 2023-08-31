@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,7 +21,6 @@ namespace DataAccessLayer.EntityFramework
                 return c.Blogs.Include(x => x.Category).ToList();
             }
         }
-
         public List<Blog> GetListWithCategoryByWriter(int id)
         {
             using (var c = new Context())
@@ -29,6 +29,15 @@ namespace DataAccessLayer.EntityFramework
             }
         }
 
-     
+        public List<Blog> MaxRaytingBlog()
+        {
+            using (var c = new Context())
+            {
+                var maxrayting = c.BlogRaytings.Max(x => x.BlogTotalScore);
+                var id = c.BlogRaytings.Where(x => x.BlogTotalScore == maxrayting).Select(x=>x.BlogID).FirstOrDefault();
+                var blog = c.Blogs.Where(x => x.BlogID == id).ToList();
+                return blog;
+            }
+        }
     }
 }

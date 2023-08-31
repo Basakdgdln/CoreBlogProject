@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CoreBlogProject.ViewComponents.Writer
+namespace CoreBlogProject.ViewComponents.Blog
 {
-    public class WriterAboutBlog : ViewComponent
+    public class BlogLastPost:ViewComponent
     {
-        WriterManager wm = new WriterManager(new EfWriterRepository());
+        BlogManager bm = new BlogManager(new EfBlogRepository());
         public IViewComponentResult Invoke()
         {
-                      return View();
+            return View(bm.GetLastBlog());
         }
     }
 }
