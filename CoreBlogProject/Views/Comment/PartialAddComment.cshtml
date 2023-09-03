@@ -1,12 +1,14 @@
-﻿<div class="comment-top">
+﻿<div class="comment-top ml-3"  style="padding-top:50px">
     <h4>Bir yorum bırakın</h4>
     <div class="comment-bottom">
-        <form action="Comment/PartialAddComment" method="post">
+        <form action="/Comment/PartialAddComment" method="post">
+            <input class="form-control" type="text" name="BlogID" value="@ViewBag.id" hidden>
             <input class="form-control" type="text" name="CommentUsername" placeholder="Adınız Soyadınız" required="">
             <input class="form-control" type="text" name="CommentTitle" placeholder="Konu" required="">
             <textarea class="form-control" name="CommentContent" placeholder="Yorumunuz..." required=""></textarea>
+            <input class="form-control" type="text" name="BlogScore" placeholder="Blog Puan" >
             <br />
-            <button type="submit" class="btn btn-primary submit" style="width:250px">Yorum Yap</button>
+            <button type="submit" class="btn btn-primary" style="width:250px">Yorum Yap</button>
         </form>
     </div>
 </div>

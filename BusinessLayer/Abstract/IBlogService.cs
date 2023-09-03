@@ -14,6 +14,7 @@ namespace BusinessLayer.Abstract
         List<Blog> GetListWithCategory();
         List<Blog> MaxRaytingBlog();
         List<Blog> GetListWithWriter(int id);
+        List<Blog> GetListWithCategoryAndWriterById(int id);
 
     }
 }

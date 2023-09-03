@@ -15,5 +15,7 @@ namespace CoreBlogProject.Controllers
         {
             return View(cm.GetList());
         }
+
+
     }
 }

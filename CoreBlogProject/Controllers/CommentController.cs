@@ -14,24 +14,25 @@ namespace CoreBlogProject.Controllers
     public class CommentController : Controller
     {
         CommentManager cm = new CommentManager(new EfCommentRepository());
+        BlogManager bm = new BlogManager(new EfBlogRepository());
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
-        public PartialViewResult PartialAddComment()
+        public PartialViewResult PartialAddComment(int id)
         {
-             return PartialView();
+            var values = bm.GetBlogByID(id);
+            ViewBag.id = values;
+            return PartialView();
         }
 
         [HttpPost]
-        public IActionResult PartialAddComment(Comment p, int id)
+        public IActionResult PartialAddComment(Comment p)
         {
-            ViewBag.d = cm.GetList(id);
             p.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             p.CommentStatus = true;
-            p.BlogID = ViewBag.d;
             cm.CommentAdd(p);
             return RedirectToAction("Index", "Blog");
         }

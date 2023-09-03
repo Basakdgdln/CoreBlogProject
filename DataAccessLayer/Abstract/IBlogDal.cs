@@ -14,6 +14,8 @@ namespace DataAccessLayer.Abstract
         List<Blog> GetListWithCategory();
         List<Blog> MaxRaytingBlog();
         List<Blog> GetListWithCategoryByWriter(int id);
+        List<Blog> GetListWithCategoryAndWriterById(int id);
+        
 
     }
 }

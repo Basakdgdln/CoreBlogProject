@@ -42,6 +42,7 @@ namespace BusinessLayer.Concrete
         {
             return _BlogDal.GetListAll(x => x.BlogID == id);
         }
+
         public List<Blog> GetLastBlog()
         {
             return _BlogDal.GetListAll().OrderByDescending(x => x.BlogCreateDate).Take(1).ToList();
@@ -75,6 +76,11 @@ namespace BusinessLayer.Concrete
         public List<Blog> MaxRaytingBlog()
         {
             return _BlogDal.MaxRaytingBlog();
+        }
+
+        public List<Blog> GetListWithCategoryAndWriterById(int id)
+        {
+            return _BlogDal.GetListWithCategoryAndWriterById(id);
         }
     }
 }

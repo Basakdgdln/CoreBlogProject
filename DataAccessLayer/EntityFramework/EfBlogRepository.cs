@@ -18,9 +18,17 @@ namespace DataAccessLayer.EntityFramework
         {
             using (var c = new Context())
             {
-                return c.Blogs.Include(x => x.Category).ToList();
+                return c.Blogs.Include(x => x.Category).Include(x=>x.Writer).ToList();
             }
         }
+        public List<Blog> GetListWithCategoryAndWriterById(int id)
+        {
+            using (var c = new Context())
+            {
+                return c.Blogs.Include(x => x.Category).Include(x => x.Writer).Where(y => y.BlogID == id).ToList();
+            }
+        }
+
         public List<Blog> GetListWithCategoryByWriter(int id)
         {
             using (var c = new Context())
@@ -34,7 +42,7 @@ namespace DataAccessLayer.EntityFramework
             using (var c = new Context())
             {
                 var maxrayting = c.BlogRaytings.Max(x => x.BlogTotalScore);
-                var id = c.BlogRaytings.Where(x => x.BlogTotalScore == maxrayting).Select(x=>x.BlogID).FirstOrDefault();
+                var id = c.BlogRaytings.Where(x => x.BlogTotalScore == maxrayting).Select(x => x.BlogID).FirstOrDefault();
                 var blog = c.Blogs.Where(x => x.BlogID == id).ToList();
                 return blog;
             }

@@ -32,7 +32,7 @@ namespace CoreBlogProject.Controllers
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.id = id;
-            return View(bm.GetBlogByID(id));
+            return View(bm.GetListWithCategoryAndWriterById(id));
         }
 
         public IActionResult BlogListByWriter()
@@ -124,6 +124,16 @@ namespace CoreBlogProject.Controllers
                 }
             }
             return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult GetCategoryBlog(int id)
+        {
+            CategoryManager cm = new CategoryManager(new EfCategoryRepository());
+            var values = bm.GetListWithCategory().Where(x => x.CategoryID == id).ToList();
+            var writer = cm.GetList().Where(x => x.CategoryID == id).Select(x => x.CategoryName).FirstOrDefault();
+            ViewBag.category = writer;
+            return View(values);
         }
     }
 }

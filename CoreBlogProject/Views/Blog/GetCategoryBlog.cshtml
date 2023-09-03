@@ -1,9 +1,7 @@
 ﻿@using EntityLayer.Concrete
-@using X.PagedList
-@using X.PagedList.Mvc.Core
-@model IPagedList<Blog>
+@model List<Blog>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "GetCategoryBlog";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
@@ -59,13 +57,6 @@
 </body>
 </html>
 
-<ul class="pagination" style="margin-left:450px">
-    <li class="page-item">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page}), new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
-   {
-       LiElementClasses = new List<string>
-            {"page-link"}
-   })
-        
-    </li>
-</ul>
+
+
+
