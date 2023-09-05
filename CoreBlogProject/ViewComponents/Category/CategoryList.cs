@@ -12,9 +12,11 @@ namespace CoreBlogProject.ViewComponents.Category
     public class CategoryList : ViewComponent
     {
         CategoryManager cm = new CategoryManager(new EfCategoryRepository());
-        public IViewComponentResult Invoke(int id = 0)
+        public IViewComponentResult Invoke()
         {
             return View(cm.GetList());
         }
+
     }
+
 }

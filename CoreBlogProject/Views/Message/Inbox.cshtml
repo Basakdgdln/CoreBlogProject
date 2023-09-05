@@ -5,29 +5,42 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-<table class="table table-bordered">
-    <tr>
-        <th>Id</th>
-        <th>Konu</th>
-        <th>Gönderen</th>
-        <th>Tarih</th>
-        <th>Mesajı Aç</th>
-    </tr>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description">
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Konu</th>
+                        <th>Gönderen</th>
+                        <th>Tarih</th>
+                        <th>Mesajı Aç</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td>@x.Subject</td>
+                            <td>@x.SenderUser.WriterName</td>
+                            <td>@(((DateTime)x.MeesageDate).ToString("dd-MMM-yyyy"))</td>
+                            <td>
+                                <a href="/Message/MessageDetails/@x.MessageID" class="btn btn-outline-info">
+                                    <i class="mdi mdi-message-text"></i>&nbsp;Mesajı Aç
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            <a href="/Message/SendMessage" class="btn btn-outline-primary"> <i class="mdi mdi-message-plus"></i>&nbsp;Yeni Mesaj Oluştur</a>
+        </div>
+    </div>
+</div>
 
-    @foreach (var x in Model)
-    {
-    <tr>
-        <td>#</td>
-        <td>@x.Subject</td>
-        <td>@x.SenderUser.WriterName</td>
-        <td>@(((DateTime)x.MeesageDate).ToString("dd-MMM-yyyy"))</td>
-        <td>
-            <a href="/Message/MessageDetails/@x.MessageID" class="btn btn-outline-warning">Mesajı Aç</a>
-        </td>
-    </tr>
-    }
-</table>
-<br />
-<a href="/Message/SendMessage" class="btn btn-outline-primary">Yeni Mesaj Oluştur</a>
+
 
 

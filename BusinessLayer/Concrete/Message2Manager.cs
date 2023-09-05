@@ -11,7 +11,7 @@ namespace BusinessLayer.Concrete
 {
     public class Message2Manager : IMessage2Service
     {
-        IMessage2Dal _message2Dal;
+        private readonly IMessage2Dal _message2Dal;
 
         public Message2Manager(IMessage2Dal message2Dal)
         {

@@ -4,12 +4,11 @@
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                    <img src="~/writer/assets/images/faces/face1.jpg" alt="profile">
+                    <img src="@ViewBag.image" alt="profile">
                     <span class="login-status online"></span>
-                    <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                    <span class="font-weight-bold mb-2">Hoşgeldin @ViewBag.d</span>
+                    <span class="font-weight-bold mb-2"> @ViewBag.d</span>
                     <span class="text-secondary text-small">Core 5.0 Yazar Paneli</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
@@ -31,12 +30,6 @@
             <a class="nav-link" href="/Blog/BlogListByWriter">
                 <span class="menu-title">Bloglarım</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Blog/BlogAdd">
-                <span class="menu-title">Yeni Blog</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">

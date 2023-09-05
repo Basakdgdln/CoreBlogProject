@@ -12,7 +12,7 @@ namespace BusinessLayer.Concrete
 {
     public class NotificationManager : INotificationService
     {
-        INotificationDal _notificationDal;
+        private readonly INotificationDal _notificationDal;
 
         public NotificationManager(INotificationDal notificationDal)
         {
@@ -21,7 +21,7 @@ namespace BusinessLayer.Concrete
 
         public List<Notification> GetList()
         {
-            return _notificationDal.GetListAll();
+            return _notificationDal.GetListAll().OrderByDescending(x=>x.NotificationDate).ToList();
         }   
 
         public void TAdd(Notification t)

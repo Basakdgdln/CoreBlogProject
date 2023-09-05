@@ -1,40 +1,8 @@
-﻿@*<div class="header_top" id="home">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Blog/Index">
-                            Ana Sayfa
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/About/Index">Hakkımızda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Blog/Index">Bloglar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Contact/Index">İletişim</a>
-                    </li>
-
-                </ul>
-                <form action="#" method="post" class="form-inline my-2 my-lg-0 header-search">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Aranacak kelime..." name="Search" required="">
-                    <button class="btn btn1 my-2 my-sm-0" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
-        </nav>
-
-    </div>*@
-
-
+﻿
 <header class="navigation">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light px-0">
-            <a class="navbar-brand order-1 py-0" href="index.html">
+            <a class="navbar-brand order-1 py-0" href="/Blog/Index">
                 <img loading="prelaod" decoding="async" class="img-fluid" src="~/reporter-bootstrap-main/theme/images/logo.png" alt="Reporter Hugo">
             </a>
             <div class="navbar-actions order-3 ml-0 ml-md-4">
@@ -43,9 +11,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <form action="#!" class="search order-lg-3 order-md-2 order-3 ml-auto">
-                <input id="search-query" name="s" type="search" placeholder="Aranacak kelime..." autocomplete="off">
-            </form>
+            @await Html.PartialAsync("/Views/Blog/ContainsBlog.cshtml")
+            @*@await Component.InvokeAsync("ContainsBlog")*@
+
             <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
                 <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
                     <li class="nav-item">
@@ -64,7 +32,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="/Admin/AdminLogin/Index">Admin Girişi</a>
-                            <a class="dropdown-item" href="/Login/Index">Dashboard</a>
+                            <a class="dropdown-item" href="/Login/Index">Yazar Girişi</a>
                             <a class="dropdown-item" href="/RegisterUser/Index">Kayıt Ol</a>
                         </div>
                     </li>

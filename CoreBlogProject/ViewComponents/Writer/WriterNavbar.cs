@@ -15,7 +15,9 @@ namespace CoreBlogProject.ViewComponents.Writer
         {
             var username = User.Identity.Name;
             var user = userManager.GetList().Where(x => x.UserName == username).Select(y => y.NameSurname).FirstOrDefault();
+            var image = userManager.GetList().Where(x => x.UserName == username).Select(y => y.ImageUrl).FirstOrDefault();
             ViewBag.d = user;
+            ViewBag.image = image;
             return View();
         }
     }

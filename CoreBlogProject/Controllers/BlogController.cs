@@ -135,5 +135,22 @@ namespace CoreBlogProject.Controllers
             ViewBag.category = writer;
             return View(values);
         }
+
+        [HttpGet]
+        public PartialViewResult ContainsBlog()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult ContainsBlog(string p)
+        {
+            var blogs = (from x in bm.GetList() select x);
+            if (string.IsNullOrEmpty(p))
+            {
+                blogs = blogs.Where(x => x.BlogTitle.Contains(p)).ToList();
+            }
+            return View(blogs);
+        }
     }
 }

@@ -38,7 +38,7 @@
                                                 </li>
                                             </ul>
                                             <h2>
-                                                <a class="post-title" href="/Blog/BlogReadAll/@x.BlogID">
+                                                <a class="post-title" href="/Blog/BlogReadAll/@x.WriterID">
                                                     @x.BlogTitle
                                                 </a>
                                             </h2>
@@ -59,13 +59,13 @@
 </body>
 </html>
 
-<ul class="pagination" style="margin-left:450px">
+<ul class="pagination page-item" style="margin-left:450px;">
     <li class="page-item">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page}), new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
    {
        LiElementClasses = new List<string>
             {"page-link"}
    })
-        
+
     </li>
 </ul>

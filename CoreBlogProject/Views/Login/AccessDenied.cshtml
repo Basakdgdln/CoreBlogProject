@@ -3,7 +3,64 @@
     Layout = null;
 }
 
+
 <!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Reporter - HTML Blog Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="This is meta description">
+    <meta name="author" content="Themefisher">
+    <link rel="shortcut icon" href="~/reporter-bootstrap-main/theme/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="~/reporter-bootstrap-main/theme/images/favicon.png" type="image/x-icon">
+
+    <!-- # Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- # CSS Plugins -->
+    <link rel="stylesheet" href="~/reporter-bootstrap-main/theme/plugins/bootstrap/bootstrap.min.css">
+
+    <!-- # Main Style Sheet -->
+    <link rel="stylesheet" href="~/reporter-bootstrap-main/theme/css/style.css">
+</head>
+
+<body>
+
+    @await Html.PartialAsync("Partial1")
+
+    <main>
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <img loading="lazy" decoding="async" src="~/reporter-bootstrap-main/theme/images/404.png" alt="404" class="img-fluid mb-4" width="500" height="350">
+                        <h1 class="mb-4"> Bu sayfa bulunamadı!!! </h1>
+                        <a href="/Blog/Index" class="btn btn-outline-primary"> Lütfen geri dönün </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    @await Html.PartialAsync("Partial3")
+
+    <!-- # JS Plugins -->
+    <script src="~/reporter-bootstrap-main/theme/plugins/jquery/jquery.min.js"></script>
+    <script src="~/reporter-bootstrap-main/theme/plugins/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="~/reporter-bootstrap-main/theme/js/script.js"></script>
+
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,16 +71,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
-<body>
-    <!-- partial:index.partial.html -->
-    <div class="wrapper">
-        <div class="box">
-            <h1>403</h1>
-            <p> Oooppss! Bu sayfaya erişim izniniz yok :(</p>
-            <p><a href="/Blog/Index">Lütfen geri dönün </a></p>
-        </div>
+<body>-->
+<!-- partial:index.partial.html -->
+<!--<div class="wrapper">
+    <div class="box">
+        <h1>403</h1>
+        <p> Oooppss! Bu sayfaya erişim izniniz yok :(</p>
+        <p><a href="/Blog/Index">Lütfen geri dönün </a></p>
     </div>
-    <!-- partial -->
-
-</body>
-</html>
+</div>-->
+<!-- partial -->
+<!--</body>
+</html>-->

@@ -5,31 +5,69 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-<table class="table table-bordered">
-    <tr>
-        <th>Id</th>
-        <th>Blog Başlığı</th>
-        <th>Oluşturulma Tarihi</th>
-        <th>Kategori</th>
-        <th>Durum</th>
-        <th>Detaylar</th>
-    </tr>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title"></h4>
+            <p class="card-description">
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Resim</th>
+                        <th>Blog Başlığı</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Kategori</th>
+                        <th>Durum</th>
+                        <th style="padding-left:115px">Detaylar</th>
+                    </tr>
+                </thead>
 
-    @foreach (var x in Model)
-    {
-        <tr>
-            <td>#</td>
-            <td>@x.BlogTitle</td>
-            <td>@(((DateTime)x.BlogCreateDate).ToString("dd-MMM-yyyy"))</td>
-            <td>@x.Category.CategoryName</td>
-            <td>@x.BlogStatus</td>
-            <td>
-                <a href="/Blog/DeleteBlog/@x.BlogID" class="btn btn-outline-danger" 
-                   onclick="return confirm('Gerçekten Silmek İstiyor Musunuz?')">Sil</a> &nbsp;
-                <a href="/Blog/EditBlog/@x.BlogID" class="btn btn-outline-warning">Düzenle</a> 
-            </td>
-        </tr>
-    }
-</table>
-<br />
-<a href="/Blog/BlogAdd" class="btn btn-outline-primary">Yeni Blog Oluştur</a>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td class="py-1"><img src="@x.BlogImage" /></td>
+                            <td>@x.BlogTitle</td>
+                            <td>@(((DateTime)x.BlogCreateDate).ToString("dd-MMM-yyyy"))</td>
+                            <td>
+                                @if (x.Category.CategoryName == "Yazılım" || x.Category.CategoryName == "Teknoloji")
+                                {
+                                    <label class="badge badge-warning">@x.Category.CategoryName</label>
+                                }
+                                @if (x.Category.CategoryName == "Tiyatro" || x.Category.CategoryName == "Film & Dizi")
+                                {
+                                    <label class="badge badge-danger">@x.Category.CategoryName</label>
+                                }
+                                @if (x.Category.CategoryName == "Oyun" || x.Category.CategoryName == "Kişisel Gelişim")
+                                {
+                                    <label class="badge badge-info">@x.Category.CategoryName</label>
+                                }
+                                @if (x.Category.CategoryName == "Spor" || x.Category.CategoryName == "Sağlık")
+                                {
+                                    <label class="badge badge-success">@x.Category.CategoryName</label>
+                                }
+                                @if (x.Category.CategoryName == "Alışveriş" || x.Category.CategoryName == "Röportaj")
+                                {
+                                    <label class="badge badge-secondary">@x.Category.CategoryName</label>
+                                }
+                            </td>
+                            <td>@x.BlogStatus</td>
+                            <td>
+                                <a href="/Blog/DeleteBlog/@x.BlogID" class="btn btn-outline-danger"
+                                   onclick="return confirm('Gerçekten Silmek İstiyor Musunuz?')">
+                                    <i class="mdi mdi-trash-can">&nbsp;</i>Sil
+                                </a> &nbsp;
+                                <a href="/Blog/EditBlog/@x.BlogID" class="btn btn-outline-warning">
+                                    <i class="mdi mdi-lead-pencil">&nbsp;</i>Düzenle
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            <a href="/Blog/BlogAdd" class="btn btn-outline-primary"> <i class="mdi mdi-plus-box-outline">&nbsp;</i>Yeni Blog Oluştur</a>
+        </div>
+    </div>
+</div>

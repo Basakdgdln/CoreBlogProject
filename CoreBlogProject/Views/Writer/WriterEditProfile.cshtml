@@ -8,7 +8,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Yazar Profil Bilgileri Düzenleme</h4>
-            <p class="card-description"> Basic form elements </p>
+            <br />
             <form class="forms-sample" method="post">
                 <div class="form-group">
                     <label for="exampleInputName1">Yazar Ad Soyad</label>
@@ -30,8 +30,8 @@
                     <label for="exampleInputPassword4">Görsel Url</label>
                     <input type="text" class="form-control" placeholder="Görsel Yolu" asp-for="@Model.imageurl" />
                 </div>
-                <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
-                <button class="btn btn-light" asp-action="Index" asp-controller="Dashboard">İptal</button>
+                <button type="submit" class="btn btn-gradient-primary mr-2"><i class="mdi mdi-lead-pencil"></i>&nbsp;Güncelle</button>
+                <button class="btn btn-light" asp-action="Index" asp-controller="Dashboard"><i class="mdi mdi-close-box"></i>&nbsp;İptal</button>
             </form>
         </div>
     </div>

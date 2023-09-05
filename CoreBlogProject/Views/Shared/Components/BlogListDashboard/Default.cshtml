@@ -26,7 +26,26 @@
                                     </td>
                                     <td>@x.BlogTitle</td>
                                     <td>
-                                        <label class="badge badge-gradient-success">@x.Category.CategoryName</label>
+                                        @if (x.Category.CategoryName == "Yazılım" || x.Category.CategoryName == "Teknoloji")
+                                        {
+                                            <label class="badge badge-warning">@x.Category.CategoryName</label>
+                                        }
+                                        @if (x.Category.CategoryName == "Tiyatro" || x.Category.CategoryName == "Film & Dizi")
+                                        {
+                                            <label class="badge badge-danger">@x.Category.CategoryName</label>
+                                        }
+                                        @if (x.Category.CategoryName == "Oyun" || x.Category.CategoryName == "Kişisel Gelişim")
+                                        {
+                                            <label class="badge badge-info">@x.Category.CategoryName</label>
+                                        }
+                                        @if (x.Category.CategoryName == "Spor" || x.Category.CategoryName == "Sağlık")
+                                        {
+                                            <label class="badge badge-success">@x.Category.CategoryName</label>
+                                        }
+                                        @if (x.Category.CategoryName == "Alışveriş" || x.Category.CategoryName == "Röportaj")
+                                        {
+                                            <label class="badge badge-secondary">@x.Category.CategoryName</label>
+                                        }
                                     </td>
                                     <td> @(((DateTime)x.BlogCreateDate).ToString("dd-MMM-yyyy")) </td>
                                     <td><a href="/Blog/BlogReadAll/@x.BlogID" class="btn btn-primary">Detaylar</a></td>

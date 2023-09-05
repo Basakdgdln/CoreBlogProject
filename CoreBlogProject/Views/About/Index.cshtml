@@ -10,67 +10,25 @@
 <html lang="en-us">
 <body>
 
-    <header class="navigation">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light px-0">
-                <a class="navbar-brand order-1 py-0" href="index.html">
-                    <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
-                </a>
-                <div class="navbar-actions order-3 ml-0 ml-md-4">
-                    <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
-                            data-target="#navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <form action="#!" class="search order-lg-3 order-md-2 order-3 ml-auto">
-                    <input id="search-query" name="s" type="search" placeholder="Search..." autocomplete="off">
-                </form>
-                <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
-                    <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About Me</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Articles
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="travel.html">Travel</a>
-                                <a class="dropdown-item" href="travel.html">Lifestyle</a>
-                                <a class="dropdown-item" href="travel.html">Cruises</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
-
     <main>
         <section class="section">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 ">
-                        <div class="breadcrumbs mb-4">
-                            <a href="index.html">Home</a>
-                            <span class="mx-1">/</span>  <a href="about.html">About</a>
+                    @foreach (var x in Model)
+                    {
+                        <div class="col-lg-12">
+                            <img loading="lazy" decoding="async" src="@x.AboutImage1" class="img-fluid w-100 mb-4" alt="#">
+                            <h1 class="mb-4">Bloğumuz Hakkında</h1>
+                            <div class="content">
+                                <p>@x.AboutDetails1</p>
+                                <blockquote>
+                                    <p>@x.AboutImage2</p>
+                                </blockquote>
+                                <p>@x.AboutDetails2</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-8 mx-auto mb-5 mb-lg-0">
-                        <img loading="lazy" decoding="async" src="images/author.jpg" class="img-fluid w-100 mb-4" alt="Author Image">
-                        <h1 class="mb-4">Hootan Safiyari</h1>
-                        <div class="content">
-                            <p>Hello, I&rsquo;m Hootan Safiyari. A Content writter, Developer and Story teller. Working as a Content writter at CoolTech Agency. Quam nihil enim maxime corporis cumque totam aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur! Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem? Vel in, doloribus debitis nesciunt fugit sequi magnam accusantium modi neque quis, vitae velit, pariatur harum autem a! Velit impedit atque maiores animi possimus asperiores natus repellendus excepturi sint architecto eligendi non, omnis nihil. Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis corporis voluptatum rerum laboriosam.</p>
-                            <blockquote>
-                                <p>Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis corporis voluptatum rerum laboriosam.</p>
-                            </blockquote>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque totam aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur! Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem.</p>
-                        </div>
-                    </div>
+                    }
+
                 </div>
             </div>
         </section>

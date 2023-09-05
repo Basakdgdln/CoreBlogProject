@@ -14,11 +14,25 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfBlogRepository : GenericRepository<Blog>, IBlogDal
     {
+
+        public List<Blog> ContainBlog(string p)
+        {
+            using (var c = new Context())
+            {
+                var list = c.Blogs.ToList();
+                if (string.IsNullOrEmpty(p))
+                {
+                    list = list.Where(x => x.BlogTitle.Contains(p) || x.Category.CategoryName.Contains(p) || x.BlogContent.Contains(p)).ToList();
+                }
+                return list;
+            }
+        }
+
         public List<Blog> GetListWithCategory()
         {
             using (var c = new Context())
             {
-                return c.Blogs.Include(x => x.Category).Include(x=>x.Writer).ToList();
+                return c.Blogs.Include(x => x.Category).Include(x => x.Writer).ToList();
             }
         }
         public List<Blog> GetListWithCategoryAndWriterById(int id)
@@ -33,7 +47,7 @@ namespace DataAccessLayer.EntityFramework
         {
             using (var c = new Context())
             {
-                return c.Blogs.Include(x => x.Category).Where(x => x.WriterID == id).ToList();
+                return c.Blogs.Include(x => x.Category).Include(x => x.Writer).Where(x => x.WriterID == id).ToList();
             }
         }
 
@@ -47,5 +61,6 @@ namespace DataAccessLayer.EntityFramework
                 return blog;
             }
         }
+
     }
 }
