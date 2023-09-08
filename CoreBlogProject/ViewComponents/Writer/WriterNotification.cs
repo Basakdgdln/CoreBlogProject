@@ -13,7 +13,7 @@ namespace CoreBlogProject.ViewComponents.Writer
         NotificationManager nm = new NotificationManager(new EfNotificationRepository());
         public IViewComponentResult Invoke()
         {
-            return View(nm.GetList().Where(x=>x.NotificationStatus==true).ToList());
+            return View(nm.GetList().Where(x => x.NotificationStatus == true).OrderByDescending(x => x.NotificationDate).ToList());
         }
     }
 }

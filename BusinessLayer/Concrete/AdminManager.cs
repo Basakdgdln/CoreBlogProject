@@ -18,27 +18,27 @@ namespace BusinessLayer.Concrete
             _adminDal = adminDal;
         }
 
-        public List<Admin> GetList()
+        public List<Adminn> GetList()
         {
             throw new NotImplementedException();
         }
 
-        public void TAdd(Admin t)
+        public void TAdd(Adminn t)
         {
             throw new NotImplementedException();
         }
 
-        public void TDelete(Admin t)
+        public void TDelete(Adminn t)
         {
             throw new NotImplementedException();
         }
 
-        public Admin TGetById(int id)
+        public Adminn TGetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void TUpdate(Admin t)
+        public void TUpdate(Adminn t)
         {
             throw new NotImplementedException();
         }
