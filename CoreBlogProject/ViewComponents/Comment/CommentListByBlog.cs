@@ -14,6 +14,7 @@ namespace CoreBlogProject.ViewComponents.Comment
         public IViewComponentResult Invoke(int id)
         {
             ViewBag.d= cm.GetList(id).Count();
+            ViewBag.id = id;
             return View(cm.GetList(id));
         }
     }

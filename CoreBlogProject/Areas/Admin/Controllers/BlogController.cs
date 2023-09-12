@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CoreBlogProject.Areas.Admin.Controllers
 {
-
+    [AllowAnonymous]
     [Area("Admin")]
     public class BlogController : Controller
     {

@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>INSPINIA | Static Tables</title>
+    <title>Asp.Net Core 5.0 | Admin Paneli</title>
 
     <link href="~/inspinia-gh-pages/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/inspinia-gh-pages/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -148,25 +148,7 @@
 
                 </nav>
             </div>
-            <div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-lg-10">
-                    <h2>Static Tables</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a>Tables</a>
-                        </li>
-                        <li class="breadcrumb-item active">
-                            <strong>Static Tables</strong>
-                        </li>
-                    </ol>
-                </div>
-                <div class="col-lg-2">
-
-                </div>
-            </div>
+           
 
             <div class="wrapper wrapper-content animated fadeInRight">
               @RenderBody()
@@ -213,7 +195,7 @@
             });
         });</script>
     
-    @*@await RenderSectionAsync("scripts")*@
+    @await RenderSectionAsync("scripts", false)
 </body>
 
 </html>

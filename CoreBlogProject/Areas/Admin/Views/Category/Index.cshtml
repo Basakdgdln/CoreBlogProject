@@ -7,24 +7,30 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<a href="/Admin/Category/AddCategory" class="btn btn-primary" style="float:right; padding:10px 25px; margin:15px">Yeni Kategori Oluştur</a>
+<a href="/Admin/Category/AddCategory" class="btn btn-primary" style="float: right; padding: 10px 25px; margin: 10px">Yeni Kategori Oluştur</a>
 <table class="table table-bordered">
     <tr>
         <th>ID</th>
         <th>Kategori Adı</th>
-        <th>Pasif Yap</th>
-        <th>Aktif Yap</th>
-        <th>Düzenle</th>
+        <th>İşlemler</th>
     </tr>
 
     @foreach (var x in Model)
     {
         <tr>
-            <th>#</th>
+            <td>@x.CategoryID</td>
             <td>@x.CategoryName</td>
-            <td><a href="#" class="btn btn-outline-danger">Pasif Yap</a></td>
-            <td><a href="#" class="btn btn-outline-success">Aktif Yap</a></td>
-            <td><a href="#" class="btn btn-outline-primary">Düzenle</a></td>
+            <td>
+                @if (x.CategoryStatus == true)
+                {
+                    <a href="/Admin/Category/CategoryStatusToFalse/@x.CategoryID" class="btn btn-outline-danger"><i class="fa fa-minus-circle"> Pasif Yap</i></a>
+                }
+                @if (x.CategoryStatus == false)
+                {
+                    <a href="/Admin/Category/CategoryStatusToTrue/@x.CategoryID" class="btn btn-outline-success"><i class="fa fa-plus"> Aktif Yap</i></a>
+                }
+                <a href="/Admin/Category/EditCategory/@x.CategoryID" class="btn btn-outline-primary"><i class="fa fa-pencil"> Düzenle</i></a>
+            </td>
         </tr>
     }
 </table>
@@ -33,9 +39,9 @@
 <div class="pagination" style="justify-content:center">
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
 {
+
     LiElementClasses = new List<string>
     {"page-link"}
 })
 </div>
-
 

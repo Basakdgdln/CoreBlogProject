@@ -1,4 +1,8 @@
-﻿using CoreBlogProject.Areas.Admin.Models;
+﻿using BusinessLayer.Concrete;
+using CoreBlogProject.Areas.Admin.Models;
+using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,9 +11,11 @@ using System.Threading.Tasks;
 
 namespace CoreBlogProject.Areas.Admin.Controllers
 {
+    [AllowAnonymous]
     [Area("Admin")]
     public class ChartController : Controller
     {
+        CategoryManager cm = new CategoryManager(new EfCategoryRepository());
         public IActionResult Index()
         {
             return View();
@@ -40,5 +46,7 @@ namespace CoreBlogProject.Areas.Admin.Controllers
             });
             return Json(new { jsonlist = list });
         }
+
+
     }
 }

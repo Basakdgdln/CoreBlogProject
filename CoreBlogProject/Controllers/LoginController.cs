@@ -1,4 +1,5 @@
-﻿using CoreBlogProject.Models;
+﻿using CoreBlogProject.Areas.Admin.Models;
+using CoreBlogProject.Models;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authentication;

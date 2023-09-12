@@ -43,5 +43,15 @@ namespace BusinessLayer.Concrete
         {
             _categoryDal.Update(t);
         }
+
+        public void CategoryStatusToTrue(int id)
+        {
+            _categoryDal.CategoryStatusToTrue(id);
+        }
+
+        public void CategoryStatusToFalse(int id)
+        {
+            _categoryDal.CategoryStatusToFalse(id);
+        }
     }
 }

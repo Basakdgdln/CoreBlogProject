@@ -9,5 +9,7 @@ namespace BusinessLayer.Abstract
 {
     public interface ICategoryService : IGenericService<Category>
     {
+        void CategoryStatusToTrue(int id);
+        void CategoryStatusToFalse(int id);
     }
 }

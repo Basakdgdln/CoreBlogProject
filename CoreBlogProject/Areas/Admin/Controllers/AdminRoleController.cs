@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace CoreBlogProject.Areas.Admin.Controllers
 {
+    [AllowAnonymous]
     [Area("Admin")]
     [Authorize(Roles = "Admin,Moderator")]
     public class AdminRoleController : Controller

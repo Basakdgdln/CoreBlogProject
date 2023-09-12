@@ -18,5 +18,13 @@ namespace CoreBlogProject.Areas.Admin.Controllers
         {
             return View(bm.GetListWithCategory());
         }
+        public IActionResult BlogDetails(int id)
+        {
+            CommentManager cm = new CommentManager(new EfCommentRepository());
+            var blog = bm.GetListWithCategoryAndWriterById(id);
+            ViewBag.d1 = cm.GetList(id).Count();
+            return View(blog);
+        }
+
     }
 }

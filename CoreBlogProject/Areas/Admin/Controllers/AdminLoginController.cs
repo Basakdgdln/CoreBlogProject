@@ -30,11 +30,11 @@ namespace CoreBlogProject.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(Adminn p)
+        public async Task<IActionResult> Index(AdminSıgnInModel p)
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager1.PasswordSignInAsync(p.Username, p.Password, false, true);
+                var result = await _signInManager1.PasswordSignInAsync(p.username, p.password, false, true);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "AdminBlog");

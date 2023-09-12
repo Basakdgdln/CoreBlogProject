@@ -1,24 +1,20 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CoreBlogProject.Areas.Admin.Controllers
+namespace CoreBlogProject.Areas.Admin.ViewComponents.Blog
 {
-    [AllowAnonymous]
-    [Area("Admin")]
-    public class AdminCommentController : Controller
+    public class BlogComment : ViewComponent
     {
         CommentManager cm = new CommentManager(new EfCommentRepository());
-        public IActionResult Index()
+        public IViewComponentResult Invoke(int id)
         {
-            return View(cm.GetCommentWithBlog());
+            ViewBag.id = id;
+            return View(cm.GetList(id));
         }
-
-
     }
 }

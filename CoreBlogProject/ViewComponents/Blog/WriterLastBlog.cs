@@ -13,7 +13,7 @@ namespace CoreBlogProject.ViewComponents.Blog
         BlogManager bm = new BlogManager(new EfBlogRepository());
         public IViewComponentResult Invoke(int id)
         {
-            ViewBag.i = id;
+            ViewBag.id = id;
             return View(bm.GetListWithCategoryByWriterBm(id).OrderByDescending(x=>x.BlogCreateDate).ToList());
         }
     }

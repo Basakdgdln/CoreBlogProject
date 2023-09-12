@@ -9,5 +9,7 @@ namespace DataAccessLayer.Abstract
 {
     public interface ICategoryDal : IGenericDal<Category>
     {
+        void CategoryStatusToTrue(int id);
+        void CategoryStatusToFalse(int id);
     }
 }
