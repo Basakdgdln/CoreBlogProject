@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace CoreBlogProject.Areas.Admin.Controllers
 {
@@ -14,9 +15,9 @@ namespace CoreBlogProject.Areas.Admin.Controllers
     public class AdminBlogController : Controller
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
-        public IActionResult Index()
+        public IActionResult Index(int page=1)
         {
-            return View(bm.GetListWithCategory());
+            return View(bm.GetListWithCategory().ToPagedList(page,8));
         }
         public IActionResult BlogDetails(int id)
         {

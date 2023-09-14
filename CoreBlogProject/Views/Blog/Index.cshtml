@@ -61,7 +61,7 @@
 
 <ul class="pagination page-item" style="margin-left:450px;">
     <li class="page-item">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new X.PagedList.Web.Common.PagedListRenderOptions
    {
        LiElementClasses = new List<string>
             {"page-link"}

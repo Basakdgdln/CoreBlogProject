@@ -37,7 +37,7 @@
 <br />
 
 <div class="pagination" style="justify-content:center">
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new X.PagedList.Mvc.Common.PagedListRenderOptionsBase
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new X.PagedList.Web.Common.PagedListRenderOptions
 {
 
     LiElementClasses = new List<string>

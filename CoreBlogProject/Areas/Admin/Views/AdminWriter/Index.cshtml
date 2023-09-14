@@ -1,0 +1,36 @@
+﻿@using EntityLayer.Concrete
+@model List<Writer>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            @foreach (var x in Model)
+            {
+                <div class="col-lg-3">
+                    <div class="contact-box center-version">
+                        <a href="profile.html">
+                            <img alt="image" class="rounded-circle" src="@x.WriterImage">
+                            <h3 class="m-b-xs"><strong>@x.WriterName</strong></h3>
+                            <div class="font">@x.WriterMail</div>
+                            <address class="m-t-md">
+                                Hakkında: @*@x.WriterAbout.Substring(0, x.WriterAbout.Substring(0, 100).LastIndexOf(" "))...*@
+                            </address>
+                        </a>
+                        <div class="card-footer btn btn-block btn-primary">
+                            <a href="#" style="color:white"><i class="fa fa-pencil"> Bilgileri Düzenle</i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,5 +1,7 @@
 ﻿@using EntityLayer.Concrete
-@model List<Blog>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Blog>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -36,6 +38,15 @@
                 </div>
             }
         </div>
+
+        <div class="pagination justify-content-center">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new X.PagedList.Web.Common.PagedListRenderOptions
+       {
+           LiElementClasses = new List<string>
+           {"page-link"}
+       })
+        </div>
+
     </div>
 </body>
 </html>
