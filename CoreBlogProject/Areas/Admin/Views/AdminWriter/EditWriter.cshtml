@@ -1,6 +1,6 @@
-﻿@model CoreBlogProject.Areas.Admin.Models.AddWriterImage
+﻿@model EntityLayer.Concrete.Writer
 @{
-    ViewData["Title"] = "AddWriter";
+    ViewData["Title"] = "EditWriter";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
@@ -22,33 +22,37 @@
                 </div>
             </div>
             <div class="ibox-content">
-                <form method="post">
+                @using (Html.BeginForm("EditWriter", "AdminWriter", FormMethod.Post))
+                {
                     <div class="form-group  row">
-                        @Html.HiddenFor(x=>x.WriterID)
+                        @Html.HiddenFor(x => x.WriterID)
                         <label class="col-sm-2 col-form-label" asp-for="@Model.WriterName">Yazar Ad Soyad:</label>
-                        <div class="col-sm-10"><input type="text" class="form-control" name="WriterName"></div>
+                        <div class="col-sm-10">@Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })</div>
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" asp-for="@Model.WriterMail">Yazar E-mail:</label>
-                        <div class="col-sm-10"><input type="text" class="form-control" name="WriterMail"></div>
+                        <div class="col-sm-10">@Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })</div>
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" asp-for="@Model.WriterAbout">Yazar Hakkında:</label>
-                        <div class="col-sm-10"><textarea class="form-control" name="WriterAbout" rows="4"></textarea></div>
+                        <div class="col-sm-10">@Html.TextAreaFor(x => x.WriterAbout, 4, 10, new { @class = "form-control" })</div>
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Yazar Resim</label>
-                        <div class="col-sm-10"><input type="file" class="form-control" asp-for="WriterImage"></div>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.WriterImage, new { @class = "form-control" })
+                        </div>
                     </div>
                     <div class="clearfix"></div>
-                    <button type="submit" class="btn btn-warning" style="float:right; height:45px; width:200px">Yazar Ekle</button>
-                </form>
+                    <button type="submit" class="btn btn-warning" style="float:right; height:45px; width:200px">Değişiklikleri Kaydet</button>
+                }
                 <div class="clearfix"></div>
             </div>
         </div>
     </div>
 </div>
+
 

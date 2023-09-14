@@ -28,22 +28,39 @@ namespace CoreBlogProject.Areas.Admin.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult AddWriter(AddWriterImage p)
-        //{
-        //    Writer w = new Writer();
-        //    //if (p.WriterImage != null)
-        //    //{
-        //    //    var extension = Path.GetExtension(p.WriterImage.FileName);
-        //    //    var newimage = Guid.NewGuid() + extension;
-        //    //    var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WriterImageFiles/", newimage);
-        //    //    var stream = new FileStream(location, FileMode.Create);
-        //    //    p.WriterImage.CopyTo(stream);
-        //    //    w.WriterImage = newimage;
-        //    //}
-        //    //w.WriterStatus = true;
-        //    Wm.TAdd(w);
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost]
+        public IActionResult AddWriter(AddWriterImage p) /*( __tekrar bak)*/
+        {
+            Writer w = new Writer();
+            if (p.WriterImage != null)
+            {
+                var extension = Path.GetExtension(p.WriterImage.FileName);
+                var newimage = Guid.NewGuid() + extension;
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WriterImageFiles/", newimage);
+                var stream = new FileStream(location, FileMode.Create);
+                p.WriterImage.CopyTo(stream);
+                w.WriterImage = newimage;
+            }
+            w.WriterStatus = true;
+            w.WriterName = p.WriterName;
+            w.WriterAbout = p.WriterAbout;
+            w.WriterMail = p.WriterMail;
+            Wm.TAdd(w);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult EditWriter(int id)
+        {
+            var writer = Wm.TGetById(id);
+            return View(writer);
+        }
+
+        [HttpPost]
+        public IActionResult EditWriter(Writer p)
+        {
+            Wm.TUpdate(p);
+            return RedirectToAction("Index");
+        }
     }
 }
