@@ -13,6 +13,7 @@ namespace CoreBlogProject.Areas.Admin.ViewComponents.Blog
         CommentManager cm = new CommentManager(new EfCommentRepository());
         public IViewComponentResult Invoke(int id)
         {
+
             ViewBag.id = id;
             return View(cm.GetList(id));
         }

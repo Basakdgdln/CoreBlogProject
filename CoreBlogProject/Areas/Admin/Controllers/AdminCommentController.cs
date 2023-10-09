@@ -19,6 +19,5 @@ namespace CoreBlogProject.Areas.Admin.Controllers
             return View(cm.GetCommentWithBlog());
         }
 
-
     }
 }

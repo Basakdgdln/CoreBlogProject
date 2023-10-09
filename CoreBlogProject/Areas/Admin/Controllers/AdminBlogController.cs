@@ -15,17 +15,26 @@ namespace CoreBlogProject.Areas.Admin.Controllers
     public class AdminBlogController : Controller
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
-        public IActionResult Index(int page=1)
+        public IActionResult Index(int page = 1)
         {
-            return View(bm.GetListWithCategory().ToPagedList(page,8));
+            return View(bm.GetListWithCategory().ToPagedList(page, 8));
         }
         public IActionResult BlogDetails(int id)
         {
             CommentManager cm = new CommentManager(new EfCommentRepository());
             var blog = bm.GetListWithCategoryAndWriterById(id);
+            TempData["blogid"] = blog;
             ViewBag.d1 = cm.GetList(id).Count();
             return View(blog);
         }
 
+        public IActionResult BlogCommment(int id)
+        {
+            id = (int)TempData["blogid"];
+            ViewBag.blogid = id;
+            CommentManager cm = new CommentManager(new EfCommentRepository());
+            cm.GetList(id);
+            return PartialView();
+        }
     }
 }

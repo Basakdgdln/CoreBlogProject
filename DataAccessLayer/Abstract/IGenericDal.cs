@@ -11,6 +11,7 @@ namespace DataAccessLayer.Abstract
     {
         List<T> GetListAll();
         List<T> GetListAll(Expression<Func<T, bool>> filter);
+        T Get(Expression<Func<T, bool>> filter);
         void Insert(T t);
         void Delete(T t);
         void Update(T t);

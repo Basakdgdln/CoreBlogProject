@@ -47,6 +47,10 @@
                             </div>
                         }
 
+                        <br /><br />
+
+                        @await Html.PartialAsync("/Areas/Admin/Views/AdminBlog/BlogComment.cshtml")
+                        @*@await Component.InvokeAsync("BlogComment", new { id =  ViewBag.id })*@
 
                     </div>
                 </div>

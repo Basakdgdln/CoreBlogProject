@@ -50,5 +50,10 @@ namespace DataAccessLayer.Repositories
             c.SaveChanges();
         }
 
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            using var c = new Context();
+            return c.Set<T>().SingleOrDefault(filter);
+        }
     }
 }

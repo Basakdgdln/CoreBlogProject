@@ -18,7 +18,10 @@ namespace BusinessLayer.Concrete
         {
             _adminDal = adminDal;
         }
-
+        public Adminn AdminLogin(string username, string password)
+        {
+            return _adminDal.Get(x=>x.Username==username && x.Password==password);
+        }
         public List<Adminn> GetList()
         {
             throw new NotImplementedException();
