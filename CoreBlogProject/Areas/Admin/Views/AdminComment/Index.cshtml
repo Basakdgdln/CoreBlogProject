@@ -89,8 +89,8 @@
 
                                     <td>@(((DateTime)x.CommentDate).ToString("dd-MMM-yyyy"))</td>
                                     <td>
-                                        <a href="#" class="btn btn-outline-danger"><i class="fa fa-close">&nbsp;</i>Sil</a> &nbsp;&nbsp;
-                                        <a href="#" class="btn btn-outline-info"><i class="fa fa-pencil">&nbsp;Düzenle </i></a>
+                                        <a href="/Admin/AdminComment/DeleteComment/@x.CommentID" class="btn btn-outline-danger" onclick="confirm('Gerçekten Silmek İstiyor Musunuz?')"><i class="fa fa-close">&nbsp;</i>Sil</a> &nbsp;&nbsp;
+                                        <a href="/Admin/AdminComment/EditComment/@x.CommentID" class="btn btn-outline-primary"><i class="fa fa-envelope-open">&nbsp;</i>Görüntüle</a>
                                     </td>
                                 </tr>
                             }

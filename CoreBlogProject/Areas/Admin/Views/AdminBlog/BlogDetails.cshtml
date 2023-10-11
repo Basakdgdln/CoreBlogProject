@@ -40,17 +40,14 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="small text-right">
-                                        <h5>Stats:</h5>
-                                        <div> <i class="fa fa-comments-o"> </i> @ViewBag.d1 yorum </div>
+                                        <h5>Yorumlar:</h5>
+                                        <div><a href="/Admin/AdminComment" style="color:black" ><i class="fa fa-comments-o"> </i> @ViewBag.d1 yorum </a></div>
                                     </div>
                                 </div>
                             </div>
                         }
 
                         <br /><br />
-
-                        @await Html.PartialAsync("/Areas/Admin/Views/AdminBlog/BlogComment.cshtml")
-                        @*@await Component.InvokeAsync("BlogComment", new { id =  ViewBag.id })*@
 
                     </div>
                 </div>

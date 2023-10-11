@@ -1,4 +1,3 @@
-
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -53,6 +52,7 @@ namespace CoreBlogProject
                 .AddCookie(x =>
                 {
                     x.LoginPath = "/Login/Index";
+                    x.LoginPath = "/Admin/AdminLogin/Index";
                 }
                );
 
@@ -62,8 +62,10 @@ namespace CoreBlogProject
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(100);
                 options.AccessDeniedPath = new PathString("/Login/AccessDenied");
                 options.LoginPath = "/Login/Index";
+                options.LoginPath = "/Admin/AdminLogin/Index";
                 options.SlidingExpiration = true;
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

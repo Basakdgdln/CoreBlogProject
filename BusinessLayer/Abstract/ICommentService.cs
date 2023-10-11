@@ -12,6 +12,9 @@ namespace BusinessLayer.Abstract
         List<Comment> GetList(int id);
         List<Comment> GetCommentWithBlog();
         void CommentAdd(Comment c);
-    
+        void CommentDelete(Comment c);
+        Comment Get(int id);
+
+
     }
 }

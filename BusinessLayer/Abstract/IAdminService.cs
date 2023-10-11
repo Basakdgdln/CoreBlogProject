@@ -9,6 +9,5 @@ namespace BusinessLayer.Abstract
 {
     public interface IAdminService : IGenericService<Adminn>
     {
-        Adminn AdminLogin(string username, string password);
-    }
+           }
 }

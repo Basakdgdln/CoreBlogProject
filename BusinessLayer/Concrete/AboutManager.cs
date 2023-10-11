@@ -20,14 +20,13 @@ namespace BusinessLayer.Concrete
 
         public About TGetById(int id)
         {
-            throw new NotImplementedException();
+           return  _aboutDal.GetById(id);
         }
 
         public List<About> GetList()
         {
             return _aboutDal.GetListAll();
         }
-
         public void TAdd(About t)
         {
             throw new NotImplementedException();
@@ -37,10 +36,9 @@ namespace BusinessLayer.Concrete
         {
             throw new NotImplementedException();
         }
-
         public void TUpdate(About t)
         {
-            throw new NotImplementedException();
+            _aboutDal.Update(t);
         }
     }
 }

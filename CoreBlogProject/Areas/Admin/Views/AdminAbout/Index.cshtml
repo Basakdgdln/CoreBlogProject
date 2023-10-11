@@ -1,0 +1,47 @@
+﻿@using EntityLayer.Concrete
+@model List<About>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <div class="resizable-panels">
+        @foreach (var item in Model)
+        {
+            <div class="ibox">
+                <div class="ibox-title" style="padding-bottom:20px">
+                    <h5>
+                        Hakkımızda Detay
+                    </h5>
+
+                    <div class="ibox-tools">
+                        <a href="/Admin/AdminAbout/EditAbout/@item.AboutID" class="btn btn-primary"> Hakkımızda Güncelle</a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+                    <p>
+                        @item.AboutDetails1
+                    </p>
+                    <p>
+                        @item.AboutDetails2
+                    </p>
+                    <p>
+                        <b>Önsöz:</b> <u> @item.AboutImage2</u>
+                    </p>
+                    <img src="@item.AboutImage1"/>
+                </div>
+               </div>
+            <div class="clearfix"></div>
+        }
+
+    </div>
+</body>
+
+</html>
+
