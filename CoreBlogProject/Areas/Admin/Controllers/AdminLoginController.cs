@@ -35,10 +35,13 @@ namespace CoreBlogProject.Areas.Admin.Controllers
                 var useridentity = new ClaimsIdentity(claims, "Login");
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
                 await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "Blog");
+                return RedirectToAction("Index", "AdminBlog");
             }
             return View();
         }
-
+        public IActionResult LogOut()
+        {
+            return RedirectToAction("Index", "AdminLogin");
+        }
     }
 }

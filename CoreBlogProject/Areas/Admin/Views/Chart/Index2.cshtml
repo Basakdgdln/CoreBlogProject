@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index2";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
@@ -21,23 +21,23 @@
         $(function () {
             $.ajax({
                 type: 'GET',
-                url: '/Admin/Chart/CategoryChart/',
+                url: '/Admin/Chart/BlogRaytingChart/',
                 success: function (chartsdata) {
                     var Data = chartsdata.jsonlist;
                     var data = new google.visualization.DataTable();
 
-                    data.addColumn('string', 'categoryname');
-                    data.addColumn('number', 'categorycount');
+                    data.addColumn('string', 'blog');
+                    data.addColumn('number', 'totalrayting');
 
                     for (var i = 0; i < Data.length; i++) {
-                        data.addRow([Data[i].categoryname, Data[i].categorycount]);
+                        data.addRow([Data[i].blog, Data[i].totalrayting]);
                     }
 
                     var chart = new google.visualization.PieChart(document.getElementById('chartdiv'));
 
                     chart.draw(data,
                         {
-                            title: "Static Core Chart",
+                            title: "Dinamik Blog Rayting Core Chart",
                             position: "top",
                             fontsize: "16px"
                         });

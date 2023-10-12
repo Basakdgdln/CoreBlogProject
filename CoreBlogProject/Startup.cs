@@ -52,7 +52,7 @@ namespace CoreBlogProject
                 .AddCookie(x =>
                 {
                     x.LoginPath = "/Login/Index";
-                    x.LoginPath = "/Admin/AdminLogin/Index";
+                    //x.LoginPath = "/Admin/AdminLogin/Index";
                 }
                );
 
@@ -62,7 +62,7 @@ namespace CoreBlogProject
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(100);
                 options.AccessDeniedPath = new PathString("/Login/AccessDenied");
                 options.LoginPath = "/Login/Index";
-                options.LoginPath = "/Admin/AdminLogin/Index";
+                //options.LoginPath = "/Admin/AdminLogin/Index";
                 options.SlidingExpiration = true;
             });
 

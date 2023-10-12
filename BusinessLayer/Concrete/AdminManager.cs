@@ -20,7 +20,7 @@ namespace BusinessLayer.Concrete
         }
         public List<Adminn> GetList()
         {
-            throw new NotImplementedException();
+            return _adminDal.GetListAll();
         }
 
         public void TAdd(Adminn t)
@@ -35,7 +35,7 @@ namespace BusinessLayer.Concrete
 
         public Adminn TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _adminDal.GetById(id);
         }
 
         public void TUpdate(Adminn t)

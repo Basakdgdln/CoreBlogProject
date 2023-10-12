@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using CoreBlogProject.Areas.Admin.Models;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
@@ -47,6 +48,36 @@ namespace CoreBlogProject.Areas.Admin.Controllers
             return Json(new { jsonlist = list });
         }
 
+        public IActionResult Index2()
+        {
+            return View();
+        }
 
+        public IActionResult BlogRaytingChart()
+        {
+            return Json(new { jsonlist = TotalBlogRaytingList() });
+        }
+        public List<TotalBlogRayting> TotalBlogRaytingList()
+        {
+            List<TotalBlogRayting> tbr = new List<TotalBlogRayting>();
+            using (var c = new Context())
+            {
+                var blogs = from x in c.Blogs
+                            join y in c.BlogRaytings
+                            on x.BlogID equals y.BlogID
+                            select new
+                            {
+                                blog = x.BlogTitle,
+                                rayting = y.BlogTotalScore
+                            };
+
+                tbr = blogs.Select(x => new TotalBlogRayting
+                {
+                    blog = x.blog,
+                    totalrayting = x.rayting
+                }).ToList();
+            }
+            return tbr;
+        }
     }
 }

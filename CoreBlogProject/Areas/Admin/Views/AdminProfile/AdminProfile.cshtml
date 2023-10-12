@@ -1,0 +1,59 @@
+﻿@model EntityLayer.Concrete.Adminn
+@{
+    ViewData["Title"] = "AdminProfile";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Yazar Ekleme Paneli</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                @*@using (Html.BeginForm("EditWriter", "AdminWriter", FormMethod.Post))
+                    {*@
+                <div class="form-group  row">
+                    @Html.HiddenFor(x => x.AdminID)
+                    <label class="col-sm-2 col-form-label" asp-for="@Model.Name">Yazar Ad Soyad:</label>
+                    <div class="col-sm-10">@Html.TextBoxFor(x => x.Name, new { @class = "form-control" }) </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" asp-for="@Model.Username">Yazar E-mail: </label>
+                    <div class="col-sm-10">@Html.TextBoxFor(x => x.Username, new { @class = "form-control" })</div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" asp-for="@Model.Password">Yazar Hakkında:</label>
+                    <div class="col-sm-10">@Html.TextAreaFor(x => x.Password, 4, 10, new { @class = "form-control" })</div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Yazar Resim</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <button type="submit" class="btn btn-warning" style="float:right; height:45px; width:200px">Değişiklikleri Kaydet</button>
+                @*}*@
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
