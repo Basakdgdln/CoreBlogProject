@@ -1,5 +1,6 @@
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -38,7 +39,6 @@ namespace CoreBlogProject
             }).AddEntityFrameworkStores<Context>();
 
             services.AddControllersWithViews();
-
             services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()

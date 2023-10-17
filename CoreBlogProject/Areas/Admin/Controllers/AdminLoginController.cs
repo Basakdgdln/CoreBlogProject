@@ -1,7 +1,10 @@
-﻿using DataAccessLayer.Concrete;
+﻿using CoreBlogProject.Areas.Admin.Models;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,6 +18,14 @@ namespace CoreBlogProject.Areas.Admin.Controllers
     [Area("Admin")]
     public class AdminLoginController : Controller
     {
+        private readonly SignInManager<AppUser> _signInManager;
+
+        public AdminLoginController(SignInManager<AppUser> signInManager)
+        {
+            _signInManager = signInManager;
+        }
+
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -22,25 +33,32 @@ namespace CoreBlogProject.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(Adminn p)
+        public async Task<IActionResult> Index(UserSıgnInViewModelArea p)
         {
-            Context c = new Context();
-            var value = c.Adminns.FirstOrDefault(x => x.Username == p.Username && x.Password == p.Password);
-            if (value != null)
+            if (ModelState.IsValid)
             {
-                var claims = new List<Claim>
+                var result = await _signInManager.PasswordSignInAsync(p.username, p.password, false, true);
+                if (User.IsInRole("Admin"))
                 {
-                    new Claim(ClaimTypes.Name, p.Username)
-                };
-                var useridentity = new ClaimsIdentity(claims, "Login");
-                ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
-                await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "AdminBlog");
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "AdminBlog");
+                    }
+                    else
+                    {
+                        return View();
+                    }
+                }
+                else
+                {
+                    return View();
+                }
             }
             return View();
         }
-        public IActionResult LogOut()
+        public async Task<IActionResult> LogOut()
         {
+            await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "AdminLogin");
         }
     }
