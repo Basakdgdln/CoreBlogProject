@@ -26,15 +26,9 @@ namespace CoreBlogProject.Areas.Admin.Controllers
             CommentManager cm = new CommentManager(new EfCommentRepository());
             var blog = bm.GetListWithCategoryAndWriterById(id);
             ViewBag.d1 = cm.GetList(id).Count();
+            ViewBag.i = id;
             return View(blog);
         }
-
-        //public PartialViewResult BlogComment(int id)
-        //{
-        //    var blog = bm.GetListWithCategoryAndWriterById(id);
-        //    ViewBag.id = blog;
-        //                        return PartialView();
-        //}
 
     }
 }

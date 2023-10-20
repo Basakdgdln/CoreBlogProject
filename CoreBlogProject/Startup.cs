@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -52,7 +53,6 @@ namespace CoreBlogProject
                 .AddCookie(x =>
                 {
                     x.LoginPath = "/Login/Index";
-                    //x.LoginPath = "/Admin/AdminLogin/Index";
                 }
                );
 
@@ -62,10 +62,8 @@ namespace CoreBlogProject
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(100);
                 options.AccessDeniedPath = new PathString("/Login/AccessDenied");
                 options.LoginPath = "/Login/Index";
-                //options.LoginPath = "/Admin/AdminLogin/Index";
                 options.SlidingExpiration = true;
             });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

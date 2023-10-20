@@ -15,6 +15,7 @@ namespace DataAccessLayer.Concrete
         {
             optionsBuilder.UseSqlServer("server=BERKAY\\SQLEXPRESS; database=CoreBlogDb; integrated security=true;");
         }
+    
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Message2>()
